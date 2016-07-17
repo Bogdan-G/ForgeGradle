@@ -725,7 +725,7 @@ public class ForgeDevPlugin extends DevBasePlugin
             branch = branch.substring(branch.lastIndexOf('/') + 1);
         }
 
-        if (branch != null && (branch.equals("master") || branch.equals("HEAD")))
+        if (/*branch != null && */(branch.equals("master") || branch.equals("HEAD")))
         {
             branch = null;
         }

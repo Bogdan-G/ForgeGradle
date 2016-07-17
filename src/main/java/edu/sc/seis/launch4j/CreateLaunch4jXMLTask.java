@@ -185,9 +185,11 @@ public class CreateLaunch4jXMLTask extends DefaultTask
         else if (VERSION2.matcher(version).matches())
         {
             String s = version + ".0";
+            StringBuilder sSB = new StringBuilder(s);
             while (VERSION2.matcher(s).matches())
             {
-                s += ".0";
+                sSB.append(".0");
+                s = String.valueOf(sSB);
             }
             return s;
         }

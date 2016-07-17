@@ -132,7 +132,7 @@ public class BaseExtension
             return;
         }
 
-        mappings = mappings.toLowerCase();
+        mappings = mappings.toLowerCase(java.util.Locale.ENGLISH);
 
         if (!mappings.contains("_"))
         {

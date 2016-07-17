@@ -189,7 +189,7 @@ public class DownloadAssetsTask extends DefaultTask
         {
             this.name = name;
             this.path = hash.substring(0, 2) + "/" + hash;
-            this.hash = hash.toLowerCase();
+            this.hash = hash.toLowerCase(java.util.Locale.ENGLISH);
             this.size = size;
         }
     }

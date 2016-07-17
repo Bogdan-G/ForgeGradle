@@ -159,7 +159,7 @@ public class ObfArtifact extends AbstractPublishArtifact
         else if (spec.getBaseName() != null)
             return spec.getBaseName().toString();
         else
-            return getFile() == null ? null : getFile().getName();
+            return /*getFile() == null ? null : */getFile().getName();//FB: Redundant nullcheck of value known to be non-null
     }
 
     /**
@@ -194,7 +194,7 @@ public class ObfArtifact extends AbstractPublishArtifact
         else if (spec.getExtension() != null)
             return spec.getExtension().toString();
         else
-            return Files.getFileExtension(getFile() == null ? null : getFile().getName());
+            return Files.getFileExtension(/*getFile() == null ? null : */getFile().getName());//FB: Redundant nullcheck of value known to be non-null
     }
 
     public String getType()
@@ -238,16 +238,16 @@ public class ObfArtifact extends AbstractPublishArtifact
         if (date == null)
         {
             File file = getFile();
-            if (file == null)
-                return null;
-            else
-            {
+            //if (file == null)//FB: Redundant nullcheck of value known to be non-null
+                //return null;
+            //else
+            //{
                 long modified = file.lastModified();
                 if (modified == 0)
                     return null;
                 else
                     new Date(modified);
-            }
+            //}
         }
 
         return date;
@@ -350,7 +350,7 @@ public class ObfArtifact extends AbstractPublishArtifact
             applySpecialSource(toObfTemp, toInjectTemp, srg, extraSrg, extraSrgFiles);
 
         // inject mcVersion!
-        if (caller.getMcVersion().startsWith("1.8"))
+        if (caller.getMcVersion().startsWith("1.8"))//mc 1.8? wut?
         {
             new McVersionTransformer(toInjectTemp, output).transform(caller.getMcVersion());
         }
@@ -365,7 +365,7 @@ public class ObfArtifact extends AbstractPublishArtifact
         if (isTempSrg)
             srg.delete();
 
-        System.gc(); // clean anything out.. I hope..
+        //System.gc(); // clean anything out.. I hope..//FB:Explicit garbage collection; extremely dubious except in benchmarking code
     }
 
     private void applySpecialSource(File input, File output, File srg, File extraSrg, FileCollection extraSrgFiles) throws IOException

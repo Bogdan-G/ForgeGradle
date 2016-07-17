@@ -585,7 +585,7 @@ public class MergeJarsTask extends CachedTask
         }
     }
 
-    private class MethodWrapper
+    private static class MethodWrapper
     {
         private MethodNode node;
         public boolean     client;

@@ -77,7 +77,7 @@ public class Library
         return name;
     }
 
-    private class Artifact
+    private static class Artifact
     {
         private String domain;
         private String name;

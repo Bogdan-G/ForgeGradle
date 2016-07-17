@@ -45,7 +45,7 @@ public class SubprojectTask extends DefaultTask
             }
         }
 
-        System.gc();
+        //System.gc();//FB:Explicit garbage collection; extremely dubious except in benchmarking code
     }
 
     private void executeTask(AbstractTask task)

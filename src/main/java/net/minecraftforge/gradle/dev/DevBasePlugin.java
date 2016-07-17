@@ -303,11 +303,11 @@ public abstract class DevBasePlugin extends BasePlugin<DevExtension>
             }
 
             DelayedFile devJson = getDevJson();
-            if (devJson == null)
+            /*if (devJson == null)
             {
                 project.getLogger().info("Dev json not set, could not create native downloads tasks");
                 return;
-            }
+            }*/
 
             if (version == null)
             {

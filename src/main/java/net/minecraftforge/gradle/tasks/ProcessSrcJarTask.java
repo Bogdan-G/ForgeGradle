@@ -263,11 +263,11 @@ public class ProcessSrcJarTask extends EditJarTask
     /**
      * A private inner class to be used with the FmlPatches
      */
-    private class ContextProvider implements ContextualPatch.IContextProvider
+    private static class ContextProvider implements ContextualPatch.IContextProvider
     {
         private Map<String, String> fileMap;
 
-        private final int           STRIP = 3;
+        private static final int           STRIP = 3;
 
         public ContextProvider(Map<String, String> fileMap)
         {

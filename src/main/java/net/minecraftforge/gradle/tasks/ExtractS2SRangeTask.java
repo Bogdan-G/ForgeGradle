@@ -492,7 +492,7 @@ public class ExtractS2SRangeTask extends DefaultTask
         }
     }
 
-    public class GenerateMapClassAdapter extends ClassVisitor
+    public static class GenerateMapClassAdapter extends ClassVisitor
     {
         String className;
         BufferedWriter writer;

@@ -381,7 +381,7 @@ public class ReobfTask extends DefaultTask
     }
 
     @SuppressWarnings({ "serial" })
-    private class ActionClosure extends Closure<Object>
+    private static class ActionClosure extends Closure<Object>
     {
         @SuppressWarnings("rawtypes")
         private final Action act;
@@ -478,13 +478,13 @@ public class ReobfTask extends DefaultTask
             {
                 for (File nested : getProject().fileTree(f))
                 {
-                    if ("srg".equals(Files.getFileExtension(nested.getName()).toLowerCase()))
+                    if ("srg".equals(Files.getFileExtension(nested.getName()).toLowerCase(java.util.Locale.ROOT)))
                     {
                         files.add(nested.getAbsoluteFile());
                     }
                 }
             }
-            else if ("srg".equals(Files.getFileExtension(f.getName()).toLowerCase()))
+            else if ("srg".equals(Files.getFileExtension(f.getName()).toLowerCase(java.util.Locale.ROOT)))
             {
                 files.add(f.getAbsoluteFile());
             }

@@ -19,7 +19,7 @@ public class AssetIndex implements Serializable
 
         AssetEntry(String hash, long size)
         {
-            this.hash = hash.toLowerCase();
+            this.hash = hash.toLowerCase(java.util.Locale.ENGLISH);
             this.size = size;
         }
     }

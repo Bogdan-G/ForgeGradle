@@ -437,11 +437,11 @@ public class DecompileTask extends CachedTask
     /**
      * A private inner class to be used with the MCPPatches only.
      */
-    private class ContextProvider implements ContextualPatch.IContextProvider
+    private static class ContextProvider implements ContextualPatch.IContextProvider
     {
         private Map<String, String> fileMap;
 
-        private final int STRIP = 1;
+        private static final int STRIP = 1;
 
         public ContextProvider(Map<String, String> fileMap)
         {

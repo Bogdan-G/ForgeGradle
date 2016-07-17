@@ -169,7 +169,7 @@ public abstract class UserPatchBasePlugin extends UserBasePlugin<UserPatchExtens
 
             for (File at : main.getResources().getFiles())
             {
-                if (at.getName().toLowerCase().endsWith("_at.cfg"))
+                if (at.getName().toLowerCase(java.util.Locale.ENGLISH).endsWith("_at.cfg"))
                 {
                     project.getLogger().lifecycle("Found AccessTransformer in main resources: " + at.getName());
                     binDeobf.addTransformer(at);

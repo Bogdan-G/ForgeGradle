@@ -202,11 +202,13 @@ public class Constants
 
             // convert to string
             String result = "";
+            StringBuilder resultSB = new StringBuilder(result);
 
             for (int i = 0; i < hash.length; i++)
             {
-                result += Integer.toString((hash[i] & 0xff) + 0x100, 16).substring(1);
+                resultSB.append(Integer.toString((hash[i] & 0xff) + 0x100, 16).substring(1));
             }
+            result = String.valueOf(resultSB);
             return result;
         }
         catch (Exception e)
@@ -235,11 +237,13 @@ public class Constants
             byte[] hash = complete.digest(bytes);
 
             String result = "";
+            StringBuilder resultSB = new StringBuilder(result);
 
             for (int i = 0; i < hash.length; i++)
             {
-                result += Integer.toString((hash[i] & 0xff) + 0x100, 16).substring(1);
+                resultSB.append(Integer.toString((hash[i] & 0xff) + 0x100, 16).substring(1));
             }
+            result = String.valueOf(resultSB);
             return result;
         }
         catch (Exception e)

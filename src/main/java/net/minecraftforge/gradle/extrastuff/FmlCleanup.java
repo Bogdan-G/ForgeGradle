@@ -327,7 +327,7 @@ public class FmlCleanup
         return name;
     }
 
-    private class Holder
+    private static class Holder
     {
         public int id;
         public boolean skip_zero;
