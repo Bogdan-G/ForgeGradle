@@ -1,6 +1,6 @@
 package net.minecraftforge.gradle.json.version;
 
-import java.util.regex.Pattern;
+import java.org.bogdang.modifications.regex.Pattern;
 
 public class OSRule
 {

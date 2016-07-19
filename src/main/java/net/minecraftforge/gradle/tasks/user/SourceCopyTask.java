@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.regex.Pattern;
+import java.org.bogdang.modifications.regex.Pattern;
 
 import net.minecraftforge.gradle.delayed.DelayedFile;
 

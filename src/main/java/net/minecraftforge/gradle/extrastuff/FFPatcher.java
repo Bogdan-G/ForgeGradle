@@ -42,7 +42,7 @@ public class FFPatcher
 
     public static String processFile(String fileName, String text, boolean fixInterfaces) throws IOException
     {
-        StringBuffer out = new StringBuffer();
+        StringBuilder out = new StringBuilder();
         Matcher m = SYNTHETICS.matcher(text);
         while(m.find())
         {
@@ -66,7 +66,7 @@ public class FFPatcher
 
         if (fixInterfaces)
         {
-            out = new StringBuffer();
+            out = new StringBuilder();
             m = ABSTRACT.matcher(text);
             while (m.find())
             {

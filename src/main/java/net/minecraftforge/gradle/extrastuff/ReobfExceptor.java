@@ -22,8 +22,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.org.bogdang.modifications.regex.Matcher;
+import java.org.bogdang.modifications.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -300,7 +300,7 @@ public class ReobfExceptor
                 }
 
                 Matcher m = reg.matcher(split[4]);
-                StringBuffer b = new StringBuffer();
+                StringBuilder b = new StringBuilder();
                 while(m.find())
                 {
                     m.appendReplacement(b, "L" + rename(m.group(1)).replace("$",  "\\$") + ";");

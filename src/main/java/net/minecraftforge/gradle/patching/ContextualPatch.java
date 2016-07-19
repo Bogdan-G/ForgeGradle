@@ -48,8 +48,8 @@ import java.io.*;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.org.bogdang.modifications.regex.Matcher;
+import java.org.bogdang.modifications.regex.Pattern;
 
 /**
  * STOLEN FROM diff4j v1.1

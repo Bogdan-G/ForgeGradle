@@ -1,7 +1,7 @@
 package edu.sc.seis.launch4j;
 
 import java.io.File;
-import java.util.regex.Pattern;
+import java.org.bogdang.modifications.regex.Pattern;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;

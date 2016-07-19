@@ -2,8 +2,8 @@ package net.minecraftforge.gradle.extrastuff;
 
 import java.io.StringReader;
 import java.io.StringWriter;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.org.bogdang.modifications.regex.Matcher;
+import java.org.bogdang.modifications.regex.Pattern;
 
 import net.minecraftforge.gradle.common.Constants;
 
@@ -253,7 +253,7 @@ public class McpCleanup
         {
             Matcher matcher = CLEANUP_unicode.matcher(text);
             int val;
-            StringBuffer buffer = new StringBuffer(text.length());
+            StringBuilder buffer = new StringBuilder(text.length());
     
             while (matcher.find())
             {

@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.org.bogdang.modifications.regex.Matcher;
+import java.org.bogdang.modifications.regex.Pattern;
 
 import net.minecraftforge.gradle.StringUtils;
 import net.minecraftforge.gradle.common.Constants;
@@ -154,7 +154,7 @@ public class RemapSourcesTask extends EditJarTask
     private String replaceInLine(String line)
     {
         // FAR all methods
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
         Matcher matcher = SRG_FINDER.matcher(line);
         while (matcher.find())
         {

@@ -3,8 +3,8 @@ package net.minecraftforge.gradle.user.patch;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.org.bogdang.modifications.regex.Matcher;
+import java.org.bogdang.modifications.regex.Pattern;
 
 import net.minecraftforge.gradle.GradleConfigurationException;
 import net.minecraftforge.gradle.delayed.DelayedObject;

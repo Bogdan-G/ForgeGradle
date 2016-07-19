@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.org.bogdang.modifications.regex.Matcher;
+import java.org.bogdang.modifications.regex.Pattern;
 
 import net.minecraftforge.gradle.common.Constants;
 import net.minecraftforge.gradle.json.GLConstantGroup;
@@ -70,8 +70,8 @@ public class GLConstantFixer
     {
         Matcher rootMatch = CALL_REGEX.matcher(text);
         String pack, method, fullCall;
-        StringBuffer out = new StringBuffer(text.length());
-        StringBuffer innerOut;
+        StringBuilder out = new StringBuilder(text.length());
+        StringBuilder innerOut;
 
         // search with regex.
         while (rootMatch.find())
@@ -82,7 +82,7 @@ public class GLConstantFixer
             method = rootMatch.group(2);
 
             Matcher constantMatcher = CONSTANT_REGEX.matcher(fullCall);
-            innerOut = new StringBuffer(fullCall.length());
+            innerOut = new StringBuilder(fullCall.length());
 
             // search for hardcoded numbers
             while (constantMatcher.find())

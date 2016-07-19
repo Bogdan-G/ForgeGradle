@@ -3,7 +3,7 @@ package edu.sc.seis.launch4j;
 
 import java.io.File;
 import java.io.Serializable;
-import java.util.regex.Pattern;
+import java.org.bogdang.modifications.regex.Pattern;
 
 import org.gradle.api.Project;
 import org.gradle.api.plugins.JavaPluginConvention;
