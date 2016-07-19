@@ -8,8 +8,8 @@ import java.util.List;
 import net.minecraftforge.gradle.StringUtils;
 import net.minecraftforge.gradle.common.Constants;
 
-import com.google.code.regexp.Matcher;
-import com.google.code.regexp.Pattern;
+import com.google.code.regexp.Matcher2;
+import com.google.code.regexp.Pattern2;
 import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
 
@@ -17,9 +17,9 @@ public class FFPatcher
 {
     static final String MODIFIERS = "public|protected|private|static|abstract|final|native|synchronized|transient|volatile|strictfp";
 
-    private static final Pattern SYNTHETICS = Pattern.compile("(?m)(\\s*// \\$FF: (synthetic|bridge) method(\\r\\n|\\n|\\r)){1,2}\\s*(?<modifiers>(?:(?:" + MODIFIERS + ") )*)(?<return>.+?) (?<method>.+?)\\((?<arguments>.*)\\)\\s*\\{(\\r\\n|\\n|\\r)\\s*return this\\.(?<method2>.+?)\\((?<arguments2>.*)\\);(\\r\\n|\\n|\\r)\\s*\\}");
+    private static final Pattern2 SYNTHETICS = Pattern2.compile("(?m)(\\s*// \\$FF: (synthetic|bridge) method(\\r\\n|\\n|\\r)){1,2}\\s*(?<modifiers>(?:(?:" + MODIFIERS + ") )*)(?<return>.+?) (?<method>.+?)\\((?<arguments>.*)\\)\\s*\\{(\\r\\n|\\n|\\r)\\s*return this\\.(?<method2>.+?)\\((?<arguments2>.*)\\);(\\r\\n|\\n|\\r)\\s*\\}");
     //private static final Pattern TYPECAST = Pattern.compile("\\([\\w\\.]+\\)");
-    private static final Pattern ABSTRACT = Pattern.compile("(?m)^(?<indent>[ \\t\\f\\v]*)(?<modifiers>(?:(?:" + MODIFIERS + ") )*)(?<return>[^ ]+) (?<method>func_(?<number>\\d+)_[a-zA-Z_]+)\\((?<arguments>([^ ,]+ (\\.\\.\\. )?var\\d+,? ?)*)\\)(?: throws (?:[\\w$.]+,? ?)+)?;$");
+    private static final Pattern2 ABSTRACT = Pattern2.compile("(?m)^(?<indent>[ \\t\\f\\v]*)(?<modifiers>(?:(?:" + MODIFIERS + ") )*)(?<return>[^ ]+) (?<method>func_(?<number>\\d+)_[a-zA-Z_]+)\\((?<arguments>([^ ,]+ (\\.\\.\\. )?var\\d+,? ?)*)\\)(?: throws (?:[\\w$.]+,? ?)+)?;$");
 
     // Remove TRAILING whitespace
     private static final String TRAILING = "(?m)[ \\t]+$";
@@ -43,7 +43,7 @@ public class FFPatcher
     public static String processFile(String fileName, String text, boolean fixInterfaces) throws IOException
     {
         StringBuilder out = new StringBuilder();
-        Matcher m = SYNTHETICS.matcher(text);
+        Matcher2 m = SYNTHETICS.matcher(text);
         while(m.find())
         {
             m.appendReplacement(out, synthetic_replacement(m).replace("$", "\\$"));
@@ -81,7 +81,7 @@ public class FFPatcher
 
     private static int processClass(List<String> lines, String indent, int startIndex, String qualifiedName, String simpleName)
     {
-        Pattern classPattern = Pattern.compile(indent + CLASS_REGEX);
+        Pattern2 classPattern = Pattern2.compile(indent + CLASS_REGEX);
 
         for (int i = startIndex; i < lines.size(); i++)
         {
@@ -94,7 +94,7 @@ public class FFPatcher
             else if (line.startsWith("package") || line.startsWith("import"))
                 continue;
 
-            Matcher matcher = classPattern.matcher(line);
+            Matcher2 matcher = classPattern.matcher(line);
 
             // found a class!
             if (matcher.find())
@@ -131,11 +131,11 @@ public class FFPatcher
     private static void processEnum(List<String> lines, String indent, int startIndex, String qualifiedName, String simpleName)
     {
         String newIndent = indent + "   ";
-        Pattern enumEntry = Pattern.compile("^" + newIndent + ENUM_ENTRY_REGEX);
-        Pattern constructor = Pattern.compile("^" + newIndent + String.format(CONSTRUCTOR_REGEX, simpleName));
-        Pattern constructorCall = Pattern.compile("^" + newIndent + "   " + CONSTRUCTOR_CALL_REGEX);
+        Pattern2 enumEntry = Pattern2.compile("^" + newIndent + ENUM_ENTRY_REGEX);
+        Pattern2 constructor = Pattern2.compile("^" + newIndent + String.format(CONSTRUCTOR_REGEX, simpleName));
+        Pattern2 constructorCall = Pattern2.compile("^" + newIndent + "   " + CONSTRUCTOR_CALL_REGEX);
         String formatted = newIndent + String.format(VALUE_FIELD_REGEX, qualifiedName, qualifiedName);
-        Pattern valueField = Pattern.compile("^" + formatted);
+        Pattern2 valueField = Pattern2.compile("^" + formatted);
         String newLine;
         boolean prevSynthetic = false;
 
@@ -145,7 +145,7 @@ public class FFPatcher
             String line = lines.get(i);
 
             // find and replace enum entries
-            Matcher matcher = enumEntry.matcher(line);
+            Matcher2 matcher = enumEntry.matcher(line);
             if (matcher.find())
             {
                 String body = matcher.group("body");
@@ -231,7 +231,7 @@ public class FFPatcher
         }
     }
 
-    private static String synthetic_replacement(Matcher match)
+    private static String synthetic_replacement(Matcher2 match)
     {
         //This is designed to remove all the synthetic/bridge methods that the compiler will just generate again
         //First off this only works on methods that bounce to methods that are named exactly alike.
@@ -265,7 +265,7 @@ public class FFPatcher
         return match.group();
     }
 
-    private static String abstract_replacement(Matcher match)
+    private static String abstract_replacement(Matcher2 match)
     {
         String orig = match.group("arguments");
         String number = match.group("number");

@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Map;
-import java.org.bogdang.modifications.regex.Matcher;
-import java.org.bogdang.modifications.regex.Pattern;
+import org.bogdang.modifications.regex.Matcher;
+import org.bogdang.modifications.regex.Pattern;
 
 import net.minecraftforge.gradle.common.Constants;
 import net.minecraftforge.gradle.json.GLConstantGroup;

@@ -14,7 +14,7 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarInputStream;
 import java.util.jar.JarOutputStream;
 import java.util.jar.Pack200;
-import java.org.bogdang.modifications.regex.Pattern;
+import org.bogdang.modifications.regex.Pattern;
 import java.util.zip.Adler32;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;

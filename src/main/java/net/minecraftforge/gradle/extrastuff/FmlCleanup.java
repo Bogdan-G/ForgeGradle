@@ -1,7 +1,7 @@
 package net.minecraftforge.gradle.extrastuff;
 
-import com.google.code.regexp.Matcher;
-import com.google.code.regexp.Pattern;
+import com.google.code.regexp.Matcher2;
+import com.google.code.regexp.Pattern2;
 import com.google.common.base.Joiner;
 import com.google.common.base.Splitter;
 import com.google.common.base.Strings;
@@ -17,13 +17,13 @@ import java.util.Map.Entry;
 public class FmlCleanup
 {
     //private static final Pattern METHOD_REG = Pattern.compile("^ {4}(\\w+\\s+\\S.*\\(.*|static)$");
-    private static final Pattern METHOD_REG = Pattern.compile("^(?<indent>\\s+)(?<modifiers>(?:(?:" + FFPatcher.MODIFIERS + ") )*)(?:(?<return>[\\w\\[\\]\\.$]+) )?(?<name>[\\w$]+)\\((?<parameters>.*?)\\)(?<end>(?: throws (?<throws>[\\w$.]+(?:, [\\w$.]+)*))?)");
-    private static final Pattern CATCH_REG = Pattern.compile("catch \\((.*)\\)$");
-    private static final Pattern METHOD_DEC_END = Pattern.compile("(}|\\);|throws .+?;)$");
-    private static final Pattern CAPS_START = Pattern.compile("^[A-Z]");
-    private static final Pattern ARRAY = Pattern.compile("(\\[|\\.\\.\\.)");
-    private static final Pattern VAR_CALL = Pattern.compile("(?i)[a-z_$][a-z0-9_\\[\\]]+ var\\d+(?:x)*");
-    private static final Pattern VAR = Pattern.compile("var\\d+(?:x)*");
+    private static final Pattern2 METHOD_REG = Pattern2.compile("^(?<indent>\\s+)(?<modifiers>(?:(?:" + FFPatcher.MODIFIERS + ") )*)(?:(?<return>[\\w\\[\\]\\.$]+) )?(?<name>[\\w$]+)\\((?<parameters>.*?)\\)(?<end>(?: throws (?<throws>[\\w$.]+(?:, [\\w$.]+)*))?)");
+    private static final Pattern2 CATCH_REG = Pattern2.compile("catch \\((.*)\\)$");
+    private static final Pattern2 METHOD_DEC_END = Pattern2.compile("(}|\\);|throws .+?;)$");
+    private static final Pattern2 CAPS_START = Pattern2.compile("^[A-Z]");
+    private static final Pattern2 ARRAY = Pattern2.compile("(\\[|\\.\\.\\.)");
+    private static final Pattern2 VAR_CALL = Pattern2.compile("(?i)[a-z_$][a-z0-9_\\[\\]]+ var\\d+(?:x)*");
+    private static final Pattern2 VAR = Pattern2.compile("var\\d+(?:x)*");
 
     private static final Comparator<String> COMPARATOR = new Comparator<String>()
     {
@@ -42,7 +42,7 @@ public class FmlCleanup
 
         for (String line : lines)
         {
-            Matcher matcher = METHOD_REG.matcher(line);
+            Matcher2 matcher = METHOD_REG.matcher(line);
             boolean found = matcher.find();
             if (!line.endsWith(";") && !line.endsWith(",") && found)// && !line.contains("=") && !NESTED_PERINTH.matcher(line).find())
             {
@@ -290,7 +290,7 @@ public class FmlCleanup
             name = name.replace(".", "");
             boolean skip_zero = true;
 
-            if (Pattern.compile("\\[").matcher(type).find())
+            if (Pattern2.compile("\\[").matcher(type).find())
             {
                 skip_zero = true;
                 name = "a" + name;

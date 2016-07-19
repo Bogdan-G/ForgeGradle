@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.org.bogdang.modifications.regex.Matcher;
-import java.org.bogdang.modifications.regex.Pattern;
+import org.bogdang.modifications.regex.Matcher;
+import org.bogdang.modifications.regex.Pattern;
 
 import net.minecraftforge.gradle.StringUtils;
 import net.minecraftforge.gradle.common.Constants;

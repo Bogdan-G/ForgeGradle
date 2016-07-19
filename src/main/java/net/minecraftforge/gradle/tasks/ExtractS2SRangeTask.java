@@ -39,7 +39,7 @@ import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 
-import com.google.code.regexp.Pattern;
+import com.google.code.regexp.Pattern2;
 import com.google.common.base.Charsets;
 import com.google.common.base.Joiner;
 import com.google.common.base.Throwables;
@@ -66,8 +66,8 @@ public class ExtractS2SRangeTask extends DefaultTask
     private DelayedFile rangeMap;
 
     private boolean allCached = false;
-    private static final Pattern FILE_FROM = Pattern.compile("\\s+@\\|([\\w\\d/.]+)\\|.*$");
-    private static final Pattern FILE_START = Pattern.compile("\\s*Class Start\\: ([\\w\\d.]+)$");
+    private static final Pattern2 FILE_FROM = Pattern2.compile("\\s+@\\|([\\w\\d/.]+)\\|.*$");
+    private static final Pattern2 FILE_START = Pattern2.compile("\\s*Class Start\\: ([\\w\\d.]+)$");
 
     @TaskAction
     public void doTask() throws IOException
@@ -114,7 +114,7 @@ public class ExtractS2SRangeTask extends DefaultTask
                 {
                     String line = it.next();
 
-                    com.google.code.regexp.Matcher match;
+                    com.google.code.regexp.Matcher2 match;
                     String fileMatch = null;
                     if (line.trim().startsWith("@"))
                     {
