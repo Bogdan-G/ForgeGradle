@@ -208,8 +208,8 @@ public abstract class DevBasePlugin extends BasePlugin<DevExtension>
         ext.setOutfile(output.getAbsolutePath());
         ext.setJar(installer.getAbsolutePath());
 
-        String command = delayedFile(DevConstants.LAUNCH4J_DIR).call().getAbsolutePath();
-        command += "/launch4j";
+        String command = (delayedFile(DevConstants.LAUNCH4J_DIR).call().getAbsolutePath()) + "/launch4j";
+        //command += "/launch4j";
 
         if (Constants.OPERATING_SYSTEM == OS.WINDOWS)
             command += "c.exe";
@@ -318,7 +318,7 @@ public abstract class DevBasePlugin extends BasePlugin<DevExtension>
                 }
                 catch (Exception e)
                 {
-                    project.getLogger().error("" + jsonFile + " could not be parsed");
+                    project.getLogger().error(jsonFile + " could not be parsed");
                     Throwables.propagate(e);
                 }
             }

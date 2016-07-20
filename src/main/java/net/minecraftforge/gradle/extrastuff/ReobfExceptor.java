@@ -54,6 +54,7 @@ public class ReobfExceptor
     // state stuff
     Map<String, String> clsMap = Maps.newHashMap();
     Map<String, String> access = Maps.newHashMap();
+    private static final Pattern prereg = Pattern.compile("L([^;]+);");
     
 
     public void buildSrg(File inSrg, File outSrg) throws IOException
@@ -251,8 +252,8 @@ public class ReobfExceptor
     {
         Map<String, String> map;
         Map<String, String> access;
-        StringBuilder out = new StringBuilder();
-        Pattern reg = Pattern.compile("L([^;]+);");
+        StringBuilder out = new StringBuilder(64);
+        Pattern reg = prereg;
 
         private SrgLineProcessor(Map<String, String> map, Map<String, String> access)
         {
@@ -354,7 +355,7 @@ public class ReobfExceptor
                 {
                     throw new RuntimeException("Modder stupidity detected, DO NOT USE __OBFID, Copy pasting code you don't understand is bad: " + className);
                 }
-                map.put(String.valueOf(value) + "_", className);
+                map.put(value + "_", className);
                 //System.out.println("  Marker:    " + String.valueOf(value));
             }
             return null;

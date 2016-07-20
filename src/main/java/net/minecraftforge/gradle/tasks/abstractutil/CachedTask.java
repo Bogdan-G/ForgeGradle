@@ -329,7 +329,7 @@ public abstract class CachedTask extends DefaultTask
                 
                 char[] name = symbolName.toCharArray();
                 name[0] = Character.toUpperCase(name[0]);
-                methodName += new String(name);
+                methodName += String.valueOf(name);
                 
                 try {
                     method = taskClass.getMethod(methodName, new Class[0]);

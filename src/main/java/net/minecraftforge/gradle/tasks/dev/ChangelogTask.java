@@ -68,7 +68,7 @@ public class ChangelogTask extends DefaultTask
         List<Map<String, Object>> builds = getBuildInfo();
         getLatestBuild(builds);
         
-        StringBuilder out = new StringBuilder();
+        StringBuilder out = new StringBuilder(64);
         out.append("Changelog:\r\n");
         for (Map<String, Object> build : builds)
         {
@@ -77,9 +77,7 @@ public class ChangelogTask extends DefaultTask
 
             if (getTargetBuild() > 0 && number > getTargetBuild()) continue;
 
-            out.append("Build ");
-            out.append(build.get("version") == null ? number : build.get("version"));
-            out.append(':').append('\n');
+            out.append("Build ").append(build.get("version") == null ? number : build.get("version")).append(':').append('\n');
 
             for (MapEntry entry : items)
             {

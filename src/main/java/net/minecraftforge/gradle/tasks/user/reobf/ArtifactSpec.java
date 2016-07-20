@@ -213,24 +213,20 @@ public class ArtifactSpec
 
         if (!Strings.isNullOrEmpty((String) appendix))
         {
-            builder.append('-');
-            builder.append(appendix);
+            builder.append('-').append(appendix);
         }
 
         if (!Strings.isNullOrEmpty((String) version))
         {
-            builder.append('-');
-            builder.append(version);
+            builder.append('-').append(version);
         }
 
         if (!Strings.isNullOrEmpty((String) classifier))
         {
-            builder.append('-');
-            builder.append(classifier);
+            builder.append('-').append(classifier);
         }
 
-        builder.append('.');
-        builder.append(extension);
+        builder.append('.').append(extension);
 
         archiveName = builder.toString();
     }

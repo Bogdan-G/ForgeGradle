@@ -371,7 +371,7 @@ public class EduDevPlugin extends DevBasePlugin
             task2.setGroup("McEdu");
         }
 
-        if (false) // COMMENT OUT SRG PATCHES!
+        if (false) // COMMENT OUT SRG PATCHES! <- wtf?
         {
             task2.setPatchDir(delayedFile(EXTRA_PATCH_DIR));
             task2.setOriginal(delayedFile(PATCH_CLEAN)); // was ECLIPSE_CLEAN_SRC

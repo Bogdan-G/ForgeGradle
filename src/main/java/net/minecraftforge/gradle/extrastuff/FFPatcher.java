@@ -156,12 +156,9 @@ public class FFPatcher
                 {
                     String[] args = body.split(", ");
 
-                    if (line.endsWith("{"))
+                    if (line.endsWith("{") && args[args.length - 1].equals("null"))
                     {
-                        if (args[args.length - 1].equals("null"))
-                        {
-                            args = Arrays.copyOf(args, args.length - 1);
-                        }
+                         args = Arrays.copyOf(args, args.length - 1);
                     }
                     body = Joiner.on(", ").join(args);
                 }
@@ -169,7 +166,7 @@ public class FFPatcher
                 if (Strings.isNullOrEmpty(body))
                     newLine += matcher.group("end");
                 else
-                    newLine += "(" + body + ")" + matcher.group("end");
+                    newLine = String.valueOf(new StringBuilder().append(newLine).append('(').append(body).append(')').append(matcher.group("end")));
             }
 
             // find and replace constructor
@@ -177,12 +174,12 @@ public class FFPatcher
             if (matcher.find())
             {
                 StringBuilder tmp = new StringBuilder();
-                tmp.append(newIndent).append(matcher.group("modifiers")).append(simpleName).append("(");
+                tmp.append(newIndent).append(matcher.group("modifiers")).append(simpleName).append('(');
 
                 String[] args = matcher.group("parameters").split(", ");
                 for(int x = 2; x < args.length; x++)
                     tmp.append(args[x]).append(x < args.length - 1 ? ", " : "");
-                tmp.append(")");
+                tmp.append(')');
 
                 tmp.append(matcher.group("end"));
                 newLine = tmp.toString();
@@ -253,8 +250,8 @@ public class FFPatcher
         for (int x = 0; x < args.length; x++)
             args[x] = args[x].split(" ")[1];
 
-        StringBuilder b = new StringBuilder();
-        b.append(args[0]);
+        StringBuilder b = new StringBuilder(args[0]);
+        //b.append(args[0]);
         for (int x = 1; x < args.length; x++)
             b.append(", ").append(args[x]);
         arg1 = b.toString();

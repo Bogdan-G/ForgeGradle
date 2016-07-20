@@ -588,9 +588,9 @@ public class FmlDevPlugin extends DevBasePlugin
             branch = null;
         }
 
-        StringBuilder out = new StringBuilder();
-        out.append(DelayedBase.resolve("{MC_VERSION_SAFE}", project)).append('-'); // Somehow configure this?
-        out.append(major).append('.').append(minor).append('.').append(revision).append('.').append(build);
+        StringBuilder out = new StringBuilder(64);
+        // Somehow configure this?
+        out.append(DelayedBase.resolve("{MC_VERSION_SAFE}", project)).append('-').append(major).append('.').append(minor).append('.').append(revision).append('.').append(build);
         if (branch != null)
         {
             out.append('-').append(branch);

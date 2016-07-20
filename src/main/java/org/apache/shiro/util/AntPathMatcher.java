@@ -294,12 +294,9 @@ public class AntPathMatcher
             for (int i = 0; i <= patIdxEnd; i++)
             {
                 ch = patArr[i];
-                if (ch != '?')
+                if (ch != '?' && ch != strArr[i])
                 {
-                    if (ch != strArr[i])
-                    {
-                        return false;// Character mismatch
-                    }
+                    return false;// Character mismatch
                 }
             }
             return true; // String matches against pattern
@@ -313,12 +310,9 @@ public class AntPathMatcher
         // Process characters before first star
         while ((ch = patArr[patIdxStart]) != '*' && strIdxStart <= strIdxEnd)
         {
-            if (ch != '?')
+            if (ch != '?' && ch != strArr[strIdxStart])
             {
-                if (ch != strArr[strIdxStart])
-                {
-                    return false;// Character mismatch
-                }
+               return false;// Character mismatch
             }
             patIdxStart++;
             strIdxStart++;
@@ -340,12 +334,9 @@ public class AntPathMatcher
         // Process characters after last star
         while ((ch = patArr[patIdxEnd]) != '*' && strIdxStart <= strIdxEnd)
         {
-            if (ch != '?')
+            if (ch != '?' && ch != strArr[strIdxEnd])
             {
-                if (ch != strArr[strIdxEnd])
-                {
-                    return false;// Character mismatch
-                }
+               return false;// Character mismatch
             }
             patIdxEnd--;
             strIdxEnd--;
@@ -394,12 +385,9 @@ public class AntPathMatcher
                 for (int j = 0; j < patLength; j++)
                 {
                     ch = patArr[patIdxStart + j + 1];
-                    if (ch != '?')
+                    if (ch != '?' && ch != strArr[strIdxStart + i + j])
                     {
-                        if (ch != strArr[strIdxStart + i + j])
-                        {
-                            continue strLoop;
-                        }
+                       continue strLoop;
                     }
                 }
 

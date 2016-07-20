@@ -92,7 +92,7 @@ public class GradleStart extends GradleStartCommon
         if (Strings.isNullOrEmpty(paths))
             paths = nativesDir;
         else
-            paths += File.pathSeparator + nativesDir;
+            paths = String.valueOf(new StringBuilder().append(paths).append(File.pathSeparator).append(nativesDir));
         
         System.setProperty("java.library.path", paths);
         

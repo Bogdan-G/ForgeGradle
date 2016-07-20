@@ -731,10 +731,10 @@ public class ForgeDevPlugin extends DevBasePlugin
         }
 
         IDelayedResolver resolver = (IDelayedResolver)project.getPlugins().findPlugin("forgedev");
-        StringBuilder out = new StringBuilder();
+        StringBuilder out = new StringBuilder(64);
 
-        out.append(DelayedBase.resolve("{MC_VERSION_SAFE}", project, resolver)).append('-'); // Somehow configure this?
-        out.append(major).append('.').append(minor).append('.').append(revision).append('.').append(build);
+         // Somehow configure this?
+        out.append(DelayedBase.resolve("{MC_VERSION_SAFE}", project, resolver)).append('-').append(major).append('.').append(minor).append('.').append(revision).append('.').append(build);
         if (branch != null)
         {
             out.append('-').append(branch);

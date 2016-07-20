@@ -415,7 +415,7 @@ public class ExtractS2SRangeTask extends DefaultTask
         @Override
         public String toString()
         {
-            return ""+path+";"+root+";"+hash;
+            return String.valueOf(new StringBuilder().append(path).append(';').append(root).append(';').append(hash));
         }
     }
 

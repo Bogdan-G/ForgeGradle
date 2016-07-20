@@ -232,7 +232,7 @@ public class ProcessJarTask extends CachedTask
         //Make SS shutup about access maps
         for (File at : ats)
         {
-            getLogger().info("" + at);
+            getLogger().info(String.valueOf(at));
             accessMap.loadAccessTransformer(at);
         }
         System.setOut(tmp);

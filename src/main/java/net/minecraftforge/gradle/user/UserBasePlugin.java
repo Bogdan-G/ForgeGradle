@@ -377,7 +377,7 @@ public abstract class UserBasePlugin<T extends UserExtension> extends BasePlugin
             }
             catch (Exception e)
             {
-                log.error("" + file + " could not be parsed");
+                log.error(file + " could not be parsed");
                 Throwables.propagate(e);
             }
         }

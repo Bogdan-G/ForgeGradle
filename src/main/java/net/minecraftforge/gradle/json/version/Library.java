@@ -103,13 +103,13 @@ public class Library
         public String getArtifact(){ return getArtifact(classifier); }
         public String getArtifact(String classifier)
         {
-            String ret = domain + ":" + name + ":" + version;
+            String ret = String.valueOf(new StringBuilder().append(domain).append(':').append(name).append(':').append(version));
             if (classifier != null && classifier.indexOf('$') > -1)
             {
                 classifier = classifier.replace("${arch}", Constants.SYSTEM_ARCH.toString());
             }
-            if (classifier != null) ret += ":" + classifier;
-            if (!"jar".equals(ext)) ret += "@" + ext;
+            if (classifier != null) ret = String.valueOf(new StringBuilder().append(ret).append(':').append(classifier));
+            if (!"jar".equals(ext)) ret = String.valueOf(new StringBuilder().append(ret).append("@").append(ext));
             return ret;
         }
         
@@ -121,8 +121,8 @@ public class Library
             {
                 classifier = classifier.replace("${arch}", Constants.SYSTEM_ARCH.toString());
             }
-            if (classifier != null) ret += "-" + classifier;
-            return ret + "." + ext;
+            if (classifier != null) ret = String.valueOf(new StringBuilder().append(ret).append('-').append(classifier));
+            return String.valueOf(new StringBuilder().append(ret).append('.').append(ext));
         }
     }
 }

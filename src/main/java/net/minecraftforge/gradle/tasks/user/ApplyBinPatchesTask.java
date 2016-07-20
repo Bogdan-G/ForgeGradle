@@ -62,6 +62,7 @@ public class ApplyBinPatchesTask extends CachedTask
 
     private HashMap<String, ClassPatch> patchlist = Maps.newHashMap();
     private GDiffPatcher patcher = new GDiffPatcher();
+    private static final Pattern prematcher = Pattern.compile(String.format("binpatch/merged/.*.binpatch"));
     
     @TaskAction
     public void doTask() throws IOException
@@ -176,7 +177,7 @@ public class ApplyBinPatchesTask extends CachedTask
 
     public void setup()
     {
-        Pattern matcher = Pattern.compile(String.format("binpatch/merged/.*.binpatch"));
+        Pattern matcher = prematcher;
 
         JarInputStream jis;
         try

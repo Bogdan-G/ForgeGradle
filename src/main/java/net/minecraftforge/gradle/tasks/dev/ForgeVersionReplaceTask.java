@@ -23,7 +23,7 @@ public class ForgeVersionReplaceTask extends DefaultTask
     {
         String data = Files.readLines(getOutputFile(), Charset.defaultCharset(), new LineProcessor<String>()
         {
-            StringBuilder buf = new StringBuilder();
+            StringBuilder buf = new StringBuilder(64);
 
             @Override
             public boolean processLine(String line) throws IOException

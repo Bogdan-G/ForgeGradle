@@ -96,7 +96,7 @@ public class BaseExtension
 
     public String getMappings()
     {
-        return mappingsChannel + "_" + (customVersion == null ? mappingsVersion : customVersion);
+        return String.valueOf(new StringBuilder().append(mappingsChannel).append("_").append((customVersion == null ? mappingsVersion : customVersion)));
     }
 
     public String getMappingsChannel()
@@ -115,7 +115,7 @@ public class BaseExtension
 
     public String getMappingsVersion()
     {
-        return customVersion == null ? ""+mappingsVersion : customVersion;
+        return customVersion == null ? String.valueOf(mappingsVersion) : customVersion;
     }
 
     public boolean mappingsSet()
