@@ -461,8 +461,8 @@ public abstract class BasePlugin<K extends BaseExtension> implements Plugin<Proj
             if (project.getGradle().getStartParameter().isOffline()) // dont even try the internet
                 return Files.toString(cache, Charsets.UTF_8);
             
-            // dude, its been less than 5 minutes since the last time..
-            if (cache.exists() && cache.lastModified() + 300000 >= System.currentTimeMillis())
+            // dude, its been less than 5 minutes since the last time..//to 1h
+            if (cache.exists() && cache.lastModified() + 3600000 >= System.currentTimeMillis())
                 return Files.toString(cache, Charsets.UTF_8);
 
             String etag;

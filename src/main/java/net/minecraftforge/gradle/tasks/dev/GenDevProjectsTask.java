@@ -84,8 +84,8 @@ public class GenDevProjectsTask extends DefaultTask
             "apply plugin: 'java' ",
             "apply plugin: 'eclipse'",
             "",
-            "sourceCompatibility = '1.6'",
-            "targetCompatibility = '1.6'",
+            "sourceCompatibility = '1.7'",
+            "targetCompatibility = '1.7'",
             "",
             "repositories",
             "{",
@@ -126,6 +126,9 @@ public class GenDevProjectsTask extends DefaultTask
         }
         a(o, 
             "",
+            "    compile 'org.eclipse.collections:eclipse-collections-api:7.1.0'", 
+            "    compile 'org.eclipse.collections:eclipse-collections:7.1.0'", 
+            "    compile 'colt:colt:1.2.0'", 
             "    testCompile 'junit:junit:4.5'", 
             "}",
             ""

@@ -117,7 +117,7 @@ public class ChangelogTask extends DefaultTask
             getProject().getLogger().debug(auth);
             con.addRequestProperty("Authorization", auth);
         }
-        return new String(ByteStreams.toByteArray(con.getInputStream()));
+        try{return new String(ByteStreams.toByteArray(con.getInputStream()));}catch(Throwable t) {return "";}//cap
     }
 
     private String cleanJson(String data, String part)
@@ -221,7 +221,7 @@ public class ChangelogTask extends DefaultTask
         }
         catch (Exception e)
         {
-            e.printStackTrace();
+            //e.printStackTrace();//nope
             getLogger().lifecycle(data);
         }
         return new ArrayList<Map<String, Object>>();
@@ -266,7 +266,7 @@ public class ChangelogTask extends DefaultTask
         }
         catch (Exception e)
         {
-            e.printStackTrace();
+            //e.printStackTrace();//nope
             getLogger().lifecycle(data);
         }
     }

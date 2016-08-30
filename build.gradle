@@ -95,6 +95,10 @@ dependencies {
     //Stuff used in the GradleStart classes
     compileOnly 'com.mojang:authlib:1.5.16'
     compileOnly "net.minecraft:launchwrapper:1.11"
+    compile 'org.eclipse.collections:eclipse-collections-api:7.1.0'
+    compile 'org.eclipse.collections:eclipse-collections:7.1.0'
+    compile 'colt:colt:1.2.0'
+    //compile fileTree(dir: "libs", include: "*.jar")
 }
 
 /*compileJava {
@@ -128,6 +132,8 @@ idea.module.scopes.PROVIDED.plus += [ configurations.compileOnly ]
 eclipse.classpath.plusConfigurations += [ configurations.compileOnly ]
 
 test {
+    //tempfix for offline mode
+    exclude "**/*"
     if (project.hasProperty("filesmaven")) // disable this test when on the forge jenkins
     {
         exclude "**/ExtensionMcpMappingTest*"
