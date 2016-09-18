@@ -129,6 +129,7 @@ public class GenDevProjectsTask extends DefaultTask
             "    compile 'org.eclipse.collections:eclipse-collections-api:7.1.0'", 
             "    compile 'org.eclipse.collections:eclipse-collections:7.1.0'", 
             "    compile 'colt:colt:1.2.0'", 
+            "    compile 'net.jpountz.lz4:lz4:1.3.0'", 
             "    testCompile 'junit:junit:4.5'", 
             "}",
             ""
