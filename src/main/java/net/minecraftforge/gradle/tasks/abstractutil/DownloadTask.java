@@ -27,11 +27,13 @@ public class DownloadTask extends CachedTask
         File outputFile = getProject().file(getOutput());
         outputFile.getParentFile().mkdirs();
         outputFile.createNewFile();
+        if (getProject().getGradle().getStartParameter().isOffline()) return;
 
         getLogger().debug("Downloading " + getUrl() + " to " + outputFile);
         
         // TODO: check etags... maybe?
 
+        try {
         HttpURLConnection connect = (HttpURLConnection) (new URL(getUrl())).openConnection();
         connect.setRequestProperty("User-Agent", Constants.USER_AGENT);
         connect.setInstanceFollowRedirects(true);
@@ -51,6 +53,10 @@ public class DownloadTask extends CachedTask
         inStream.close();
         outStream.flush();
         outStream.close();
+        } catch (Throwable t) {
+        getLogger().debug("Error download file " + getUrl() + " or offline mode?");
+        t.printStackTrace();
+        }
 
         getLogger().info("Download complete");
     }

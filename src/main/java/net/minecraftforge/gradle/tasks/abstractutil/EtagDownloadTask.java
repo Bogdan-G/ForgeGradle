@@ -44,6 +44,7 @@ public class EtagDownloadTask extends DefaultTask
         {
             etag = "";
         }
+        if (getProject().getGradle().getStartParameter().isOffline()) return;
 
         try
         {

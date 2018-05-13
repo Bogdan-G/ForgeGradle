@@ -78,7 +78,7 @@ public class GenDevProjectsTask extends DefaultTask
         Files.touch(file);
 
         // prepare file string for writing.
-        StringBuilder o = new StringBuilder(64);
+        StringBuilder o = new StringBuilder(1024);
         
         a(o, 
             "apply plugin: 'java' ",

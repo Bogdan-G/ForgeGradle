@@ -104,11 +104,13 @@ public class ChangelogTask extends DefaultTask
 
     private String read(String url) throws MalformedURLException, IOException
     {
+        if (getProject().getGradle().getStartParameter().isOffline()) return "";
         return read(new URL(getServerRoot() + "job/" + getJobName() + url));
     }
 
     private String read(URL url) throws IOException
     {
+        if (getProject().getGradle().getStartParameter().isOffline()) return "";
         URLConnection con = null;
         con = url.openConnection();
         con.setRequestProperty("User-Agent", Constants.USER_AGENT);
